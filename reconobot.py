@@ -1,8 +1,5 @@
-import praw
 
-exit()
-
-r = praw.Reddit(user_agent='econobot')
+r = praw.Reddit(user_agent='econobot', disable_update_check=True)
 recon = r.get_subreddit('economics')
 submissions = recon.get_hot(limit=5);
 

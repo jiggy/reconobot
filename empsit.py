@@ -1,5 +1,4 @@
 import urllib2
-from bs4 import BeautifulSoup
 
 def get_empsit_data():
     empsit = urllib2.urlopen('http://www.bls.gov/news.release/empsit.a.htm')
