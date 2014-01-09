@@ -1,0 +1,10 @@
+You'll need:
+ * Python 2.7 - http://www.python.org/download/releases/2.7/
+ * Google App Engine SDK for Python - https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python
+ * pip - https://pypi.python.org/pypi/pip
+ * virtualenv is optional since all libs go in the project folder anyway
+
+Run the following from project dir:
+
+pip install -r .\requirements.txt --target=./lib
+/path/to/appengine/dev_appserver.py .

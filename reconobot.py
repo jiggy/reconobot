@@ -1,3 +1,4 @@
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'lib'))
 
 r = praw.Reddit(user_agent='econobot', disable_update_check=True)
 recon = r.get_subreddit('economics')
