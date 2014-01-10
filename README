@@ -1,3 +1,10 @@
+This is a simple reddit bot designed to grab the BLS employment situation report issued
+on the first Friday of every month and post it to http://www.reddit.com/r/economics with
+key indicators highlighted in the headline. The app is deployed to google app engine to be
+run on a cron.
+
+See here as an example: http://www.reddit.com/r/Economics/comments/1uvow3/bls_report_participation_rate_02_to_628/
+
 You'll need:
  * Python 2.7 - http://www.python.org/download/releases/2.7/
  * Google App Engine SDK for Python - https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python
@@ -8,3 +15,6 @@ Run the following from project dir:
 
 pip install -r .\requirements.txt --target=./lib
 /path/to/appengine/dev_appserver.py .
+
+NB: This app has only run once thus far and it was run manually. App engine deployment is still work in 
+progress.
