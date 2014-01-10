@@ -1,13 +1,18 @@
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'lib'))
+import util
 
-r = praw.Reddit(user_agent='econobot', disable_update_check=True)
-recon = r.get_subreddit('economics')
-submissions = recon.get_hot(limit=5);
+util.import_from("lib")
+import praw
+import empsit
 
-for x in submissions:
-    print str(x)
+def submit_link(title, url):
+    r = praw.Reddit(user_agent='econobot/0.1 by /u/tootie', disable_update_check=True)
+    credentials = util.get_config("creds")
+    r.login(credentials["user"], credentials["password"])
+    r.submit("economics", title, url=empsit.bls_url)
 
+data = empsit.get_empsit_data()
+title = empsit.generate_headline(data)
 
-#r.login("econobot", "buttered$noodles")
-#r.login("tootie", "22t00tie")
-#r.send_message("econobot", "hi", "yay")
+print empsit.bls_url
+print title
+#submit_link(title, empsit.bls_url)

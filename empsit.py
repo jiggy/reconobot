@@ -1,9 +1,12 @@
 import urllib2
+import util
 from bs4 import BeautifulSoup
 
+bls_cfg = util.get_config("bls")
+bls_url = bls_cfg['summary_table_url']
+
 def get_empsit_data():
-    empsit = urllib2.urlopen('http://www.bls.gov/news.release/empsit.a.htm')
-    print empsit.info()
+    empsit = urllib2.urlopen(bls_url)
 
     soup = BeautifulSoup(empsit.read())
     data_table = soup.find(id='cps_empsit_sum')
@@ -23,7 +26,22 @@ def get_empsit_data():
                 }
 
     empsit.close()
-
     return highlights
 
-print get_empsit_data()
+def generate_headline(data):
+    headline = "BLS Report: "
+    first = True
+    for key in data.keys():
+        val = data[key]['this_month']
+        change = float(data[key]['change'])
+        if change == 0:
+            change = 'unchanged at'
+        elif change > 0:
+            change = "+" + str(change) + " to"
+        else:
+            change = str(change) + " to"
+        if first == False:
+            headline = headline + ", "
+        headline = headline + " " + key + " " + change + " " + val
+        first = False
+    return headline
