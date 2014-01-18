@@ -14,4 +14,4 @@ def import_from(package_dir):
             sys.path.insert(0, "%s/%s" % (package_dir_path, filename))
 
 def get_config(name):
-    return json.load(open("./config/" + name + ".json"))
+    return json.load(open(os.path.join(os.path.dirname(__file__), "config", name) + ".json"))
